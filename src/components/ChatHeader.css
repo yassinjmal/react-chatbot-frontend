@@ -1,0 +1,9 @@
+.chat-header {
+  background-color: #2563eb; /* Blue */
+  color: white;
+  padding: 15px;
+  font-size: 1.25rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

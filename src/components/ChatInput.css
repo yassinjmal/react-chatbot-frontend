@@ -1,0 +1,47 @@
+/* Default (Light Mode) */
+.chat-input {
+  display: flex;
+  padding: 15px;
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+}
+
+.chat-input input {
+  flex: 1;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 20px;
+  outline: none;
+  background-color: #f8f8f8;
+  color: #000;
+}
+
+.chat-input button {
+  margin-left: 10px;
+  padding: 10px 15px;
+  border-radius: 20px;
+  background-color: #2563eb;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+}
+
+/* Dark Mode Overrides */
+.dark-mode .chat-input {
+  background-color: #333;
+  border-top: 1px solid #444;
+}
+
+.dark-mode .chat-input input {
+  background-color: #444;
+  color: #fff;
+  border: 1px solid #555;
+}
+
+.dark-mode .chat-input button {
+  background-color: #444;
+  border: 1px solid #555;
+}
+.dark-mode .chat-input button:hover {
+  background-color: #555;
+}

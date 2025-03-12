@@ -1,0 +1,52 @@
+/* Default (Light Mode) */
+.chat-body {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  background-color: #f9fafb;
+  display: flex;
+  flex-direction: column;
+}
+
+.chat-message {
+  margin: 5px 0;
+  padding: 12px 15px;
+  border-radius: 15px;
+  max-width: 70%;
+  line-height: 1.4;
+}
+
+.user {
+  align-self: flex-end;
+  background-color: #2563eb;
+  color: #fff;
+}
+
+.bot {
+  align-self: flex-start;
+  background-color: #e5e7eb;
+  color: #111827;
+}
+
+/* Dark Mode Overrides */
+.dark-mode .chat-body {
+  background-color: #1e1e1e; /* Dark background for chat area */
+}
+
+.dark-mode .user {
+  background-color: #2f59b7; /* Slightly lighter shade for user messages in dark mode */
+}
+
+.dark-mode .bot {
+  background-color: #444444; /* Dark background for bot messages */
+  color: #ffffff;
+}
+/* In ChatBody.css or ChatPage.css, for the main chat container */
+.chat-body {
+  overflow-y: auto;     /* Vertical scroll is OK */
+  overflow-x: hidden;   /* Hide horizontal scrollbar */
+}
+
+.chat-page {
+  overflow-x: hidden; 
+}
