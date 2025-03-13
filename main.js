@@ -1,28 +1,33 @@
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
-function createWindow() {
-  const win = new BrowserWindow({
+function createWindow () {
+  const mainWindow = new BrowserWindow({
     width: 800,
     height: 600,
-    transparent: true, // Make the window transparent
-    frame: false, // Remove the window frame
-    alwaysOnTop: true,
-    resizable: false,
     webPreferences: {
+      preload: path.join(__dirname, 'preload.js'),
       nodeIntegration: true,
-      contextIsolation: false, // Required for direct IPC communication
+      contextIsolation: false,
     },
+    frame: false, // No frame for a floating bubble effect
+    transparent: true, // Transparent background
+    alwaysOnTop: true, // Always on top
   });
 
-  // Enable click-through for the entire window initially
-  win.setIgnoreMouseEvents(true);
-
-  // Listen for messages from the renderer process to toggle click-through
-  ipcMain.on('set-ignore-mouse-events', (event, ignore) => {
-    win.setIgnoreMouseEvents(ignore);
-  });
-
-  win.loadURL('http://localhost:3000');
+  mainWindow.loadURL('http://localhost:3000'); // Assuming your React app runs on this URL
 }
 
-app.whenReady().then(createWindow);
+app.on('ready', createWindow);
+
+app.on('window-all-closed', () => {
+  if (process.platform !== 'darwin') {
+    app.quit();
+  }
+});
+
+app.on('activate', () => {
+  if (BrowserWindow.getAllWindows().length === 0) {
+    createWindow();
+  }
+});

@@ -1,20 +1,67 @@
-/* Rendre le fond de l'application totalement transparent */
+/* Light Mode (Default) */
+body {
+    background-color: #f9f9f9;
+    color: #333;
+    transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* Dark Mode */
+.dark-mode {
+    background-color: #121212;
+    color: white;
+}
+
+/* Apply dark mode to pages */
+.dark-mode .settings-page,
+.dark-mode .chat-sidebar,
+.dark-mode .chat-page,
+.dark-mode .history-page {
+    background-color: #1e1e1e;
+    color: white;
+}
+
+/* Sidebar specific styles */
+.chat-sidebar {
+    width: 20%;
+    background-color: #0f172a;
+    color: white;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.dark-mode .chat-sidebar {
+    background-color: #0d1b2a;
+}
+
+/* Checkbox Toggle */
+.toggle-dark-mode {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.toggle-dark-mode input {
+    margin-right: 10px;
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+}
+
+.checkbox-label {
+    font-size: 16px;
+    font-weight: bold;
+}
+.dark-mode {
+  background-color: #121212;
+  color: #ffffff;
+  transition: background 0.3s ease, color 0.3s ease;
+}
 html, body, #root {
     height: 100%;
     width: 100%;
     margin: 0;
     padding: 0;
-    background: rgba(0, 0, 0, 0); /* Fond transparent */
-    overflow: hidden; /* Empêcher tout scroll */
 }
 
-/* Assurer que seuls les éléments spécifiques sont visibles */
-.App {
-    background: rgba(0, 0, 0, 0); /* Transparence totale */
-    color: white;
-}
-
-/* Assurer que tout le contenu est caché sauf la bulle */
-.hidden-content {
-    display: none; /* Cache les autres pages */
-}

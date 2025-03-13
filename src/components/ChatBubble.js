@@ -52,9 +52,7 @@ const ChatBubble = () => {
   };
 
   const handleMouseUp = () => {
-    if (isClickRef.current && !isDraggingRef.current) {
-      toggleChat(); // Ensure the bubble opens on click
-    }
+    if (isClickRef.current && !isDraggingRef.current) toggleChat();
     isClickRef.current = false;
     isDraggingRef.current = false;
     setBubblePosition((prev) => ({
@@ -88,7 +86,7 @@ const ChatBubble = () => {
             initial={{ opacity: 0, scale: 0.8 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
-            transition={{ duration: 0.2 }} // Decrease the duration for a quicker open
+            transition={{ duration: 0.3 }}
             style={{
               left: bubblePosition.x < screenWidth / 2 ? bubblePosition.x + 60 : bubblePosition.x - 280,
               top: Math.max(50, Math.min(bubblePosition.y, screenHeight - 400)),
