@@ -120,8 +120,8 @@ const FormPage = () => {
             >
               <option value="">Select Role</option>
               <option value="admin">Admin</option>
-              <option value="editor">Editor</option>
-              <option value="viewer">Viewer</option>
+              <option value="user">User</option>
+              
             </select>
             {errors.userRole && <span className="error-message">{errors.userRole}</span>}
           </div>
