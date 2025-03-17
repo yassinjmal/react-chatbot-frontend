@@ -9,19 +9,40 @@ function ChatPage({ smallView }) {
   const chatBodyRef = useRef(null);
   const dummyScrollRef = useRef(null);
 
-  const handleSend = (text) => {
+  const handleSend = async (text) => {
     if (!text.trim()) return;
     setMessages((prev) => [...prev, { sender: "user", text }]);
     setIsTyping(true);
 
-    // Simulate bot response after 2 seconds
-    setTimeout(() => {
+    try {
+      // Uncomment this fetch logic if connecting to backend
+      const response = await fetch("http://localhost:3001/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ message: text }), // Send user message to the backend
+      });
+
+      const data = await response.json();
+
       setMessages((prev) => [
         ...prev,
-        { sender: "bot", text: "Hello, I'm a bot!" },
+        { sender: "bot", text: data.reply }, // Use the bot's response from the backend
       ]);
+    } catch (error) {
+      console.error("Error fetching bot response:", error);
+      if (error.response) {
+        console.error("Status code:", error.response.status);
+        console.error("Response data:", error.response.data);
+      }
+      setMessages((prev) => [
+        ...prev,
+        { sender: "bot", text: "Sorry, I couldn't process your message." },
+      ]);
+    } finally {
       setIsTyping(false);
-    }, 2000);
+    }
   };
 
   // Auto-scroll when messages change

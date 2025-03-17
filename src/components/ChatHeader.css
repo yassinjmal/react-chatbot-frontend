@@ -1,9 +1,38 @@
+/* === PROFESSIONAL HEADER === */
 .chat-header {
-  background-color: #2563eb; /* Blue */
+  background-color: #2563eb; /* Bright blue background */
   color: white;
-  padding: 15px;
-  font-size: 1.25rem;
+  padding: 20px 30px; /* More padding for a spacious feel */
+  font-size: 1.5rem; /* Larger, more readable text */
+  font-weight: 600; /* Semi-bold text for better emphasis */
   display: flex;
   align-items: center;
   justify-content: center;
+  border-bottom: 3px solid #1d4ed8; /* Darker blue for a subtle border */
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+  border-radius: 10px 10px 0 0; /* Rounded top corners */
+  text-transform: uppercase; /* Capitalized header for a more professional look */
+}
+
+/* Logo (if you have one) */
+.chat-header .logo {
+  margin-right: 15px; /* Space between logo and text */
+}
+
+/* Title */
+.chat-header h1 {
+  font-family: 'Roboto', sans-serif; /* Clean and modern font */
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px; /* Slight letter spacing for a refined look */
+  color: white;
+  text-align: center;
+}
+
+/* For responsiveness */
+@media (max-width: 600px) {
+  .chat-header {
+    padding: 15px 20px; /* Adjust padding for smaller screens */
+    font-size: 1.2rem; /* Slightly smaller text */
+  }
 }

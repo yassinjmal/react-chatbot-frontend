@@ -1,29 +1,85 @@
+/* === MAIN CONTAINER === */
 .history-page {
-  padding: 20px;
-  background: #f9f9f9; /* Light background color */
-  border-radius: 15px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  padding: 25px;
+  background: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+  max-width: 600px;
+  margin: 30px auto;
+  text-align: center;
 }
 
 .history-page h2 {
+  color: #222;
+  font-size: 1.8rem;
   margin-bottom: 20px;
-  color: #333;
+  font-weight: 600;
 }
 
+/* === CHAT LIST === */
 .history-page ul {
   list-style: none;
   padding: 0;
 }
 
-.history-page li {
-  background: #ffffff; /* White background for list items */
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 5px;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Subtle shadow */
-  transition: background 0.3s ease;
+/* === CHAT ITEMS === */
+.history-item {
+  background: #f9f9f9;
+  padding: 15px 18px;
+  margin-bottom: 12px;
+  border-radius: 8px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
 }
 
-.history-page li:hover {
-  background: #f1f1f1; /* Light grey on hover */
+.history-title {
+  font-size: 1.1rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.history-timestamp {
+  font-size: 0.85rem;
+  color: #777;
+  margin-top: 5px;
+}
+
+/* === HOVER EFFECT === */
+.history-item:hover {
+  background: #f1f1f1;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* === DARK MODE === */
+.dark-mode .history-page {
+  background: #222;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.dark-mode .history-page h2 {
+  color: #fff;
+}
+
+.dark-mode .history-item {
+  background: #333;
+  color: #eee;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.dark-mode .history-title {
+  color: #f1f1f1;
+}
+
+.dark-mode .history-timestamp {
+  color: #bbb;
+}
+
+.dark-mode .history-item:hover {
+  background: #444;
+  transform: translateY(-3px);
 }

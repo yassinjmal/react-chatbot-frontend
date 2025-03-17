@@ -1,47 +1,86 @@
-/* Default (Light Mode) */
+/* === CHAT INPUT CONTAINER === */
 .chat-input {
   display: flex;
-  padding: 15px;
+  align-items: center;
+  padding: 12px 18px;
   border-top: 1px solid #ddd;
   background-color: #fff;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.08); /* Soft top shadow */
 }
 
+/* === TEXT INPUT FIELD === */
 .chat-input input {
   flex: 1;
-  padding: 10px;
+  padding: 12px 15px;
   border: 1px solid #ccc;
-  border-radius: 20px;
+  border-radius: 25px;
   outline: none;
-  background-color: #f8f8f8;
-  color: #000;
+  background-color: #f9fafb;
+  color: #333;
+  font-size: 1rem;
+  transition: all 0.3s ease;
 }
 
+.chat-input input:focus {
+  border-color: #2563eb;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(37, 99, 235, 0.2); /* Soft blue glow */
+}
+
+/* === SEND BUTTON === */
 .chat-input button {
-  margin-left: 10px;
-  padding: 10px 15px;
-  border-radius: 20px;
-  background-color: #2563eb;
+  margin-left: 12px;
+  padding: 12px 18px;
+  border-radius: 25px;
+  background: linear-gradient(135deg, #2563eb, #1e40af);
   color: #fff;
   border: none;
+  font-size: 1rem;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
-/* Dark Mode Overrides */
+.chat-input button:hover {
+  background: linear-gradient(135deg, #1e40af, #102a67);
+  transform: translateY(-2px); /* Lift effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+.chat-input button:active {
+  transform: scale(0.98);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.15);
+}
+
+/* === DARK MODE === */
 .dark-mode .chat-input {
-  background-color: #333;
-  border-top: 1px solid #444;
+  background-color: #222;
+  border-top: 1px solid #333;
+  box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.2);
 }
 
 .dark-mode .chat-input input {
-  background-color: #444;
+  background-color: #333;
   color: #fff;
-  border: 1px solid #555;
+  border: 1px solid #444;
+}
+
+.dark-mode .chat-input input:focus {
+  border-color: #5294ff;
+  box-shadow: 0 0 8px rgba(82, 148, 255, 0.3);
 }
 
 .dark-mode .chat-input button {
-  background-color: #444;
-  border: 1px solid #555;
+  background: linear-gradient(135deg, #2a5adf, #1c3c9e);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
 }
+
 .dark-mode .chat-input button:hover {
-  background-color: #555;
+  background: linear-gradient(135deg, #1c3c9e, #0f255b);
+  transform: translateY(-2px);
+}
+
+.dark-mode .chat-input button:active {
+  transform: scale(0.98);
 }

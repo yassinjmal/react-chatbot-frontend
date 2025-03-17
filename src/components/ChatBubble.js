@@ -33,7 +33,7 @@ const ChatBubble = () => {
 
   const handleMouseDown = (e) => {
     isClickRef.current = true;
-    isDraggingRef.current = false;
+    isDraggingRef.current = false;  
     setTimeout(() => {
       if (isClickRef.current) {
         isDraggingRef.current = true;
@@ -55,15 +55,43 @@ const ChatBubble = () => {
     if (isClickRef.current && !isDraggingRef.current) toggleChat();
     isClickRef.current = false;
     isDraggingRef.current = false;
-    setBubblePosition((prev) => ({
-      x: prev.x < screenWidth / 2 ? 10 : screenWidth - 70,
-      y: prev.y,
-    }));
+    setBubblePosition((prev) => {
+      // Adjust bubble position based on screen width (left or right)
+      return {
+        x: prev.x < screenWidth / 2 ? 10 : screenWidth - 70,
+        y: prev.y,
+      };
+    });
   };
 
   const handleNavigation = (path) => {
     navigate(path);
     setMenuOpen(false);
+  };
+
+  // Adjust chat window position based on bubble position
+  const calculateWindowPosition = () => {
+    const gap = 10; // Space between bubble and chat-window
+    let adjustedX = bubblePosition.x + 60 + gap; // Add gap between bubble and window (right side)
+    
+    // If the chat window overflows on the right, move it to the left
+    if (adjustedX + 400 > screenWidth) {
+      adjustedX = bubblePosition.x - 380 - gap; // Move the window to the left with a gap
+    }
+
+    // Ensure there's no overlap on the left or right side
+    if (adjustedX < gap) {
+      adjustedX = gap; // Prevent the window from going off-screen on the left
+    }
+
+    let adjustedY = bubblePosition.y;
+    
+    // Adjust position vertically to stay within the screen
+    if (adjustedY + 500 > screenHeight) {
+      adjustedY = screenHeight - 500; // Adjust position to stay within screen vertically
+    }
+
+    return { left: adjustedX, top: adjustedY };
   };
 
   return (
@@ -87,10 +115,7 @@ const ChatBubble = () => {
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.8 }}
             transition={{ duration: 0.3 }}
-            style={{
-              left: bubblePosition.x < screenWidth / 2 ? bubblePosition.x + 60 : bubblePosition.x - 280,
-              top: Math.max(50, Math.min(bubblePosition.y, screenHeight - 400)),
-            }}
+            style={calculateWindowPosition()}
           >
             <div className="chat-window-header">
               <h3 className="chat-title">ChatBot</h3>

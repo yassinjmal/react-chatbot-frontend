@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react"; // Icônes pour masquer/afficher
+import { Eye, EyeOff } from "lucide-react"; // Icons for showing/hiding password
 import "./SettingsPage.css";
 
 const SettingsPage = ({ darkMode, toggleDarkMode }) => {
@@ -9,7 +9,7 @@ const SettingsPage = ({ darkMode, toggleDarkMode }) => {
   const [error, setError] = useState("");
   const navigate = useNavigate();
 
-  const correctPassword = "admin123"; // Mot de passe correct (à sécuriser)
+  const correctPassword = "admin123"; // Correct password (to be secured)
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -26,22 +26,25 @@ const SettingsPage = ({ darkMode, toggleDarkMode }) => {
       <form onSubmit={handleSubmit}>
         <label>
           Password:
-          <input
-            type={showPassword ? "text" : "password"}
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button
-            type="button"
-            onClick={() => setShowPassword(!showPassword)}
-          >
-            {showPassword ? <EyeOff /> : <Eye />}
-          </button>
+          <div className="input-wrapper">
+            <input
+              type={showPassword ? "text" : "password"}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+            />
+            <button
+              type="button"
+              onClick={() => setShowPassword(!showPassword)}
+              className="icon-button"
+            >
+              {showPassword ? <EyeOff /> : <Eye />}
+            </button>
+          </div>
         </label>
         <button type="submit">Submit</button>
         {error && <p className="error">{error}</p>}
       </form>
-      <label>
+      <label htmlFor="darkMode">
         Dark Mode:
         <input
           type="checkbox"
